@@ -1,0 +1,28 @@
+package page.helpDesk;
+
+import base.BaseSeleniumPage;
+
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class LoginPage extends BaseSeleniumPage{
+   @FindBy(id ="username")
+   private WebElement  loginField;
+
+   @FindBy(id ="password")
+   private WebElement  passField;
+
+   public LoginPage() {
+      PageFactory.initElements(driver, this);
+   }
+
+   public TicketsPage auth(String login, String pass) {
+      loginField.sendKeys(login);
+      passField.sendKeys(pass, Keys.ENTER);
+
+      return new TicketsPage();
+   }
+   
+}

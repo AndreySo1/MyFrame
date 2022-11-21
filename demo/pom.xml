@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>pageobject</groupId>
+  <artifactId>demo</artifactId>
+  <version>1.0</version>
+
+  <name>demo</name>
+  <!-- FIXME change it to the project's website -->
+  <!-- <url>http://www.example.com</url> -->
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>18</maven.compiler.source>
+    <maven.compiler.target>18</maven.compiler.target>
+    <aspectj.version>1.8.10</aspectj.version>
+    <!-- <testng.suiteXml>testng.xml</testng.suiteXml> -->
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>4.3.0</version>
+   </dependency>
+
+   <dependency>
+    <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>7.6.1</version>
+      <!-- <scope>test</scope> -->
+   </dependency>
+
+   <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-testng</artifactId>
+      <version>2.17.3</version>
+   </dependency>
+
+   <dependency>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>5.3.0</version>
+   </dependency>
+
+<!-- for read from *.conf files  -->
+   <dependency>
+      <groupId>com.typesafe</groupId>
+      <artifactId>config</artifactId>
+      <version>1.4.2</version>
+   </dependency>
+
+   <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>4.5.1</version>
+      <!-- <scope>test</scope> -->
+   </dependency>
+
+<!--   <dependency>-->
+<!--     <groupId>io.rest-assured</groupId>-->
+<!--     <artifactId>json-path</artifactId>-->
+<!--     <version>4.5.1</version>-->
+<!--     &lt;!&ndash; <scope>test</scope> &ndash;&gt;-->
+<!--   </dependency>-->
+
+   <!-- <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.10</version>
+   </dependency> -->
+
+  <!-- <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.13.4.2</version>
+  </dependency> -->
+
+<!-- for read dataProvider with Excel -->
+  <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>5.2.2</version>
+  </dependency>
+
+<!-- for read dataProvider with Excel -->
+  <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>5.2.2</version>
+  </dependency>
+
+<!-- for read dataProvider with Excel -->
+  <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml-schemas</artifactId>
+      <version>4.1.2</version>
+  </dependency>
+
+   <!-- for connected with DB -->
+   <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.30</version>
+   </dependency>
+
+   <!-- for connected with DB -->
+   <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>5.3.23</version>
+   </dependency>
+
+  </dependencies>
+
+  <build>
+      <plugins>
+        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+          <configuration>
+               <argLine>
+                  -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+               </argLine>
+               <systemProperties>
+                  <property>
+                     <name>allure.results.directory</name>
+                     <!-- <value>${project.build.directory}/allure-results</value> -->
+                     <value>${project.basedir}/allure-results</value>
+                  </property>
+               </systemProperties>
+               <suiteXmlFiles>
+                  <!-- <suiteXmlFile>src/test/resources/${testng.suiteXml}</suiteXmlFile> -->
+               </suiteXmlFiles>
+          </configuration>
+          <dependencies>
+               <dependency>
+                  <groupId>org.aspectj</groupId>
+                  <artifactId>aspectjweaver</artifactId>
+                  <version>${aspectj.version}</version>
+               </dependency>
+          </dependencies>
+        </plugin>
+        <plugin>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-maven</artifactId>
+            <version>2.10.0</version>
+            <configuration>
+               <reportVersion>2.14.0</reportVersion>
+               <propertiesFilePath>src/test/resources/allure.properties</propertiesFilePath>
+               <reportDirectory>${project.basedir}/allureReport</reportDirectory>
+               <resultsDirectory>${project.basedir}/allure-results</resultsDirectory>
+            </configuration>
+         </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.7.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+      </plugins>
+  </build>
+</project>
