@@ -34,5 +34,10 @@
 - *  Properties var
 > path to .properties file: src\test\resources\app.properties
 
-- * 
+- * Mockito for mocking
+> example path: src\test\java\mokitoExample
+
+- * WireMock for stubing API
+> example path: src\test\java\wireMockExample \
+> if we use Standalone server we need create mapping end start server(example mapping in comment into file: src\test\java\wireMockExample\myAStandaloneTest.java )
          
