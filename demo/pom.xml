@@ -60,7 +60,15 @@
       <!-- <scope>test</scope> -->
    </dependency>
 
-<!--   <dependency>-->
+  <!--  for api json-schema-validator  -->
+  <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>json-schema-validator</artifactId>
+      <version>5.2.1</version>
+  </dependency>
+
+
+      <!--   <dependency>-->
 <!--     <groupId>io.rest-assured</groupId>-->
 <!--     <artifactId>json-path</artifactId>-->
 <!--     <version>4.5.1</version>-->

@@ -14,7 +14,9 @@
 > reportDirectory: {project.basedir}/allureReport; 
 
 - Rest Assured
-> path to response-request spec: src/main/java/helpers/specApiRequestResponse/Specification.java 
+> path to response-request spec: src/main/java/helpers/specApiRequestResponse/Specification.java \
+> JSON Schema Validation example path: src/test/java/apiReqres/JsonSchemaValidationTest.java \
+> JSON Schema Validation schema.json path: src/test/resources/schema.json
 
 
 - Typesafe config reader
