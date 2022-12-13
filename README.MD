@@ -7,6 +7,7 @@
 > - use webdrivermanager
 > - WebDriverFactory path: src/main/java/common/WebDriverFactory.java
 > - Main config const: src/main/java/common/ConfigFramework.java
+> - Add cookies example: src/main/java/page/addCookiesSmsHub/InfoPage.java
 
 - Allure report
 > - path to properties: src\test\resources\allure.properties;

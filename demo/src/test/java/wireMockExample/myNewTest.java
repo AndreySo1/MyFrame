@@ -58,7 +58,7 @@ public class myNewTest {
                     .contentType(ContentType.JSON)
                     .when()
                     .get("/users/2")
-                    .then()
+                    .then().log().all()
                     .extract().as(UserData.class);
 
         Assert.assertEquals(resp.getFirst_name(), dataBody.getFirst_name());

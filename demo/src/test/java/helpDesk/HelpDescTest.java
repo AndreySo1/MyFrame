@@ -13,7 +13,7 @@ import page.helpDesk.TicketsPage;
 import static helpers.StringModifier.getUniqueString;
 
 public class HelpDescTest extends BaseSeleniumTest{
-   @Test
+   @Test(enabled = false)
    public void checkTicket() {
       String title = getUniqueString(TestValues.TEST_TITLE);
 

@@ -6,6 +6,7 @@ import io.restassured.http.ContentType;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -17,7 +18,7 @@ public class myTest {
 
     private WireMockServer wireMockServer;
 
-    @BeforeTest
+    @BeforeClass
     public void setUpTest(){
         wireMockServer = new WireMockServer(options().bindAddress("localhost")); //No-args constructor will start on port 8080, no HTTPS
 //        wireMockServer = new WireMockServer(options().bindAddress("localhost").port(8008)); //No-args constructor will start on port 8080, no HTTPS
