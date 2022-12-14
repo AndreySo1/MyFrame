@@ -43,4 +43,8 @@
 - * WireMock for stubing API
 > - example path: src\test\java\wireMockExample
 > - if we use Standalone server we need create mapping end start server(example mapping in comment into file: src\test\java\wireMockExample\myAStandaloneTest.java )
+
+- * Flaky Test
+> - config to count retry: src/main/java/common/TestNgFlakyRetry.java
+> - add in every Flaky test annotation @BeforeClass with code example: src/test/java/flackyTests/FlakyTest.java
          
