@@ -47,4 +47,6 @@
 - * Flaky Test
 > - config to count retry: src/main/java/common/TestNgFlakyRetry.java
 > - add in every Flaky test annotation @BeforeClass with code example: src/test/java/flackyTests/FlakyTest.java
-         
+
+- * Soft Assertions
+> - example: src/test/java/softAssertions/softAssertionsTest.java
